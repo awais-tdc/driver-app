@@ -15,6 +15,8 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as Yup from "yup";
  
+export default function LoginPage(props) {
+  
 const defaultTheme = createTheme();
  const schema = Yup.object({
     name: Yup.string().required("Name is required"),
@@ -23,10 +25,10 @@ const defaultTheme = createTheme();
       .required("Email or Phone Number is required"),
     password: Yup.string().required("Password is required"),
     address: Yup.string().required("Address is required"),
-    cnic: Yup.string().required("CNIC is required"),
+    cnic: props.role === 'driver' ? Yup.string().required('CNIC is required') : Yup.string(),
+
   });
  
-export default function LoginPage(props) {
  
   const navigate = useNavigate();
  
@@ -36,21 +38,22 @@ export default function LoginPage(props) {
     handleSubmit,
     values,
     errors,
-    resetForm// Formik's errors object
+    resetForm
   } = useFormik({
     initialValues: { name: "", email: "", password: "", address: "", cnic: "" },
     validationSchema: schema,
+    enableReinitialize: true,
     onSubmit: async (data) => {
       console.log(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
       resetForm()
-      if(props.role==="pessenger"){
+      if (props.role === 'passenger') {
         navigate('/BookRide');
-      }else if(props.role==="driver"){
-      navigate('/AcceptRide');
-    }
+      } else if (props.role === 'driver') {
+        navigate('/AcceptRide');
+      }
+    },
      
-    }
   });
  
   return (
