@@ -20,15 +20,15 @@ const SplashScreen = () => {
       paddingX={{ xs: 2, sm: 4, md: 6 }}
     >
       <div style={{ marginTop: '150px', textAlign: 'center' }}>
-        <Typography style={{ fontSize: '13px' }}>
-          Welcome to My App
+        <Typography style={{ fontSize: '13px',color : "gray" }}>
+          Welcome to
         </Typography>
-        <Typography variant="h2" gutterBottom>
-          DRIVELU
-        </Typography>
+        <Box sx = {{mt : 2}}>
+        <img src='/mainlogo.png' alt='logo' style={{width : "100%"}}/>
+        </Box>
       </div>
       <div style={{ textAlign: 'center', padding: '20px', maxWidth: '400px', width: '100%' }}>
-        <Typography style={{ fontSize: '13px', marginBottom: '20px' }}>
+        <Typography style={{ fontSize: '13px', marginBottom: '20px', color :"gray" }}>
           Connect with people, connect with society
         </Typography>
         <Button

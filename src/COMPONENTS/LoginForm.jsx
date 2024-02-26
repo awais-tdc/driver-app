@@ -10,7 +10,7 @@ const AnimatedBox = styled(Box)({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  minHeight: '100vh',
+  height: '90vh',
   paddingX: { xs: 2, sm: 4, md: 6 },
   transition: 'transform 0.5s ease-in-out',
   '&:hover': {

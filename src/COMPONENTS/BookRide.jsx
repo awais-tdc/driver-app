@@ -118,7 +118,7 @@ const BookRide = () => {
         <Box
           sx={{
             backgroundColor: "lightblue",
-            borderRadius: "20px",
+            borderRadius: "30px",
             padding: 2,
             width: "100%",
           }}
@@ -140,10 +140,11 @@ const BookRide = () => {
               Create your membership
             </Typography>
           </Box>
-          <form style={{ width: "100%"  }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <form style={{ width: "90%"  }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Box sx={{margin:' 0 auto'}}>
+                <Box sx={{margin:'0 auto'}}>
                 <AnimatedTextField
                
                   label="Enter Your Pickup Location"
@@ -174,7 +175,7 @@ const BookRide = () => {
                       sx={{
                         display: "flex",
                         justifyContent: "space-between",
-                        width: "100%",
+                        width: "90%",
                       }}
                     >
                       <Typography>Johar Town</Typography>
@@ -186,7 +187,7 @@ const BookRide = () => {
                       sx={{
                         display: "flex",
                         justifyContent: "space-between",
-                        width: "100%",
+                        width: "90%",
                       }}
                     >
                       <Typography>DHA</Typography>
@@ -198,7 +199,7 @@ const BookRide = () => {
                       sx={{
                         display: "flex",
                         justifyContent: "space-between",
-                        width: "100%",
+                        width: "90%",
                       }}
                     >
                       <Typography>Bahria</Typography>
@@ -376,10 +377,11 @@ const BookRide = () => {
               </Grid>
             </Grid>
           </form>
+          </Box>
         </Box>
       </AnimatedBox>
       
-      <NavigationBar  sx={{backgroundColor:"white", display:'flex', justifyContent:"space-between"}}position="fixed">
+      <NavigationBar  sx={{backgroundColor:"white", display:'flex', justifyContent:"space-between", position : 'fixed', overflowY : "hidden"}}>
         <StyledToolbar>
           <StyledIconButton component={Link} to="/BookRide">
             <HomeIcon  sx={{color:"gray"}} />

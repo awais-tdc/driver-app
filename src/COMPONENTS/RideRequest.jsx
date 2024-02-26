@@ -96,7 +96,7 @@ const RideRequest = () => {
     <motion.div initial="hidden" animate="visible" variants={containerVariants}>
       <StyledIconButton
         style={{
-          color: "blue",
+          color: "black",
           fontWeight: "600",
           fontSize: "17px",
           letterSpacing: "0.2px",
