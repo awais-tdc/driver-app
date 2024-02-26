@@ -16,7 +16,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
  
 export default function LoginPage(props) {
-  
+
 const defaultTheme = createTheme();
  const schema = Yup.object({
     name: Yup.string().required("Name is required"),
@@ -73,7 +73,7 @@ const defaultTheme = createTheme();
               <LockOpenOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign In
+              Log In
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <Grid container spacing={2}>
