@@ -26,7 +26,7 @@ import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
  
-
+ 
 const locationArray = [
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27225.328237875936!2d74.25636258697475!3d31.46461865700412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919015f82b0b86f%3A0x2fcaf9fdeb3d02e6!2sJohar%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1708944640767!5m2!1sen!2s",
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.038094003889!2d74.38770727469411!3d31.468138249722465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190611d0832215%3A0x461694c13fc63062!2sDHA%20Sector%20EE%20Dha%20Phase%204%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1708944685209!5m2!1sen!2s" ,
@@ -74,7 +74,7 @@ const StyledIconButton = styled(IconButton)({
   fontSize: "18px", // Adjust the fontsize here
 });
  
-
+ 
 const BookRide = () => {
   const [pickupLocation, setPickupLocation] = useState("");
   const [destination, setDestination] = useState("");
@@ -118,7 +118,7 @@ const BookRide = () => {
         <Box
           sx={{
             backgroundColor: "lightblue",
-            borderRadius: "30px",
+            borderRadius: "20px",
             padding: 2,
             width: "100%",
           }}
@@ -140,11 +140,11 @@ const BookRide = () => {
               Create your membership
             </Typography>
           </Box>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <form style={{ width: "90%"  }}>
+          <Box sx = {{display : "flex", justifyContent : "center", width : "90%", margin : "auto"}}>
+          <form style={{ width: "100%"  }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Box sx={{margin:'0 auto'}}>
+                <Box sx={{margin:' 0 auto'}}>
                 <AnimatedTextField
                
                   label="Enter Your Pickup Location"
@@ -175,7 +175,7 @@ const BookRide = () => {
                       sx={{
                         display: "flex",
                         justifyContent: "space-between",
-                        width: "90%",
+                        width: "100%",
                       }}
                     >
                       <Typography>Johar Town</Typography>
@@ -187,7 +187,7 @@ const BookRide = () => {
                       sx={{
                         display: "flex",
                         justifyContent: "space-between",
-                        width: "90%",
+                        width: "100%",
                       }}
                     >
                       <Typography>DHA</Typography>
@@ -199,7 +199,7 @@ const BookRide = () => {
                       sx={{
                         display: "flex",
                         justifyContent: "space-between",
-                        width: "90%",
+                        width: "100%",
                       }}
                     >
                       <Typography>Bahria</Typography>
@@ -380,8 +380,8 @@ const BookRide = () => {
           </Box>
         </Box>
       </AnimatedBox>
-      
-      <NavigationBar  sx={{backgroundColor:"white", display:'flex', justifyContent:"space-between", position : 'fixed', overflowY : "hidden"}}>
+     
+      <NavigationBar  sx={{backgroundColor:"white", display:'flex', justifyContent:"space-between"}}position="fixed">
         <StyledToolbar>
           <StyledIconButton component={Link} to="/BookRide">
             <HomeIcon  sx={{color:"gray"}} />

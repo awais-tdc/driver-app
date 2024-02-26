@@ -3,13 +3,11 @@ import { Box, AppBar, Toolbar, IconButton, Typography, Button } from '@mui/mater
 import { styled } from '@mui/system';
 import { Link, useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
-import ScheduleIcon from '@mui/icons-material/Schedule';
-import HistoryIcon from '@mui/icons-material/History';
 import RequestIcon from '@mui/icons-material/RequestPage';
 import AccountIcon from '@mui/icons-material/AccountCircle';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'; 
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+ 
 const AccountContainer = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
@@ -54,61 +52,51 @@ const LogoutButton = styled(Button)({
  
 const AccountPage = () => {
   const navigate = useNavigate();
- 
-  // Dummy data for name and email, you can replace it with actual data
-  const name = 'John Doe';
-  const email = 'john.doe@example.com';
+  const data = JSON.parse(localStorage.getItem("userInfo") || '{}');
  
   const handleLogout = () => {
     // Implement your logout logic here
     console.log('Logging out');
+    localStorage.removeItem("userInfo");
     // Redirect to the login page after logout
-    navigate('/');
+    navigate('/LoginForm');
   };
  
   return (
     <>
     <Box sx = {{display : "flex", justifyContent : "space-between", mb : 2}}>
-  <ArrowBackIcon onClick={() => {
-    navigate("/RideRequest");
-              }} />
-  <Typography sx = {{fontWeight : "bold"}}>Profile</Typography>
-  <MoreVertIcon/>
-</Box>
-        <AccountContainer>
-
+      <ArrowBackIcon onClick={() => {
+        navigate("/RideRequest");
+      }} />
+      <Typography sx = {{fontWeight : "bold"}}>Profile</Typography>
+      <MoreVertIcon/>
+    </Box>
+    <AccountContainer>
       <DriverImage src="https://source.unsplash.com/random/150x150" alt="Driver" />
       <Typography variant="h6" gutterBottom>
-        {name}
+        {data.name}
       </Typography>
       <Typography variant="body2" color="textSecondary">
-        {email}
+        {data.email}
       </Typography>
-      <LogoutButton style={{marginTop: '60px', padding: '10px 30px', backgroundColor : "blue"}} onClick={() => {
-    navigate("/LoginForm/*");
-              }}>Logout</LogoutButton>
+      <LogoutButton style={{marginTop: '60px', padding: '10px 30px', backgroundColor : "blue"}} onClick={handleLogout}>Logout</LogoutButton>
     </AccountContainer>
-    
+   
     <NavigationBar  sx={{backgroundColor:"white", display:'flex', justifyContent:"space-between"}}position="fixed">
-        <StyledToolbar>
-          <StyledIconButton component={Link} to="/BookRide">
-            <HomeIcon  sx={{color:"gray"}} />
-           
-          </StyledIconButton>
-          <StyledIconButton component={Link} to="/RideRequest">
-            <RequestIcon  sx={{color:"gray"}} />
-           
-          </StyledIconButton>
-          <StyledIconButton component={Link} to="/account">
-            <AccountIcon  sx={{color:"gray"}} />
-           
-          </StyledIconButton>
-        </StyledToolbar>
-      </NavigationBar>
+      <StyledToolbar>
+        <StyledIconButton component={Link} to="/BookRide">
+          <HomeIcon  sx={{color:"gray"}} />
+        </StyledIconButton>
+        <StyledIconButton component={Link} to="/RideRequest">
+          <RequestIcon  sx={{color:"gray"}} />
+        </StyledIconButton>
+        <StyledIconButton component={Link} to="/account">
+          <AccountIcon  sx={{color:"gray"}} />
+        </StyledIconButton>
+      </StyledToolbar>
+    </NavigationBar>
     </>
   );
 };
  
-
-
 export default AccountPage;
