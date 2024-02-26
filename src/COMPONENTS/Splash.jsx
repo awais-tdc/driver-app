@@ -1,7 +1,7 @@
 // SplashScreen.jsx
 import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
-import { useNavigate , Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SplashScreen = () => {
   const navigate = useNavigate();

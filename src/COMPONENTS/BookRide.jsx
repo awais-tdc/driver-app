@@ -56,14 +56,12 @@ const StyledImage = styled("img")({
 // });
  
 const NavigationBar = styled(AppBar)({
-  top: "auto",
+  top : "auto",
   bottom: 0,
-  height: "50px",
   width: "100%",
-  padding: "0px 40px",
-  margin: "0",
   backgroundColor: "rgb(0,0,221)",
   cursor: "pointer",
+  overflow : "hidden"
 });
  
 const StyledToolbar = styled(Toolbar)({

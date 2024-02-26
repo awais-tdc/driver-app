@@ -68,7 +68,7 @@ const OptionPage = () => {
             onClick={() => handleRoleSelection('passenger')}
           >
             <Typography variant="h6" component="div" style={{ marginRight: '10px' }}>
-              I need a ride
+              Pessenger
             </Typography>
           </Button>
 
@@ -83,7 +83,7 @@ const OptionPage = () => {
             onClick={() => handleRoleSelection('driver')}
           >
             <Typography variant="h6" component="div" style={{ marginRight: '10px' }}>
-              I am driving
+Driver
             </Typography>
           </Button>
         </>

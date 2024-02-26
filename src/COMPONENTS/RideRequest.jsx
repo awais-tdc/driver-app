@@ -73,7 +73,6 @@ const RideRequest = () => {
   const location = useLocation();
   const rideState = location.state || {};
   const navigate = useNavigate();
-  
   const {
     pickupLocation = "Unknown Pickup Location",
     destination = "Unknown Destination",
