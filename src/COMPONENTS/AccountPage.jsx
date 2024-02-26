@@ -1,51 +1,29 @@
 import React from 'react';
-import { Box, Button, Typography, AppBar, Toolbar, IconButton } from '@mui/material';
+import { Box, AppBar, Toolbar, IconButton, Typography, Button } from '@mui/material';
 import { styled } from '@mui/system';
 import { Link, useNavigate } from 'react-router-dom';
-import NotificationsIcon from '@mui/icons-material/Notifications';  
-import SwitchDriverIcon from '@mui/icons-material/DirectionsCar';  
 import HomeIcon from '@mui/icons-material/Home';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import HistoryIcon from '@mui/icons-material/History';
 import RequestIcon from '@mui/icons-material/RequestPage';
 import AccountIcon from '@mui/icons-material/AccountCircle';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';  // Import ArrowForwardIcon
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'; 
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const AccountContainer = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  paddingTop: '20px',
+  padding: '20px', // Add padding for better spacing
 });
-
+ 
 const DriverImage = styled('img')({
   width: '120px',
   height: '120px',
   borderRadius: '50%',
-  marginBottom: '10px',
+  marginBottom: '20px', // Increased margin for better spacing
 });
-
-// Remove unused NotificationContainer
-const NotificationIcon = styled(NotificationsIcon)({
-  fontSize: '30px',  // Decreased font size
-});
-
-const CheckStatusButton = styled(Button)({
-  marginTop: '10px',
-  display: 'flex',
-  alignItems: 'center',  // Center the icon and text
-  gap: '5px',  // Add padding between icon and text
-});
-
-// Define SwitchDriverButton
-const SwitchDriverButton = styled(Button)({
-  marginTop: '10px',
-  display: 'flex',
-  alignItems: 'center',  // Center the icon and text
-  gap: '30px',
-  padding: '10px'  // Add padding between icon and text
-});
-
+ 
 const NavigationBar = styled(AppBar)({
   top: 'auto',
   bottom: 0,
@@ -53,80 +31,84 @@ const NavigationBar = styled(AppBar)({
   width: '100%',
   backgroundColor: 'rgb(0, 0, 221)',
 });
-
+ 
 const StyledToolbar = styled(Toolbar)({
   justifyContent: 'space-between',
+  alignItems: 'center',
 });
-
-const StyledIconButton = styled(IconButton)({ 
+ 
+const StyledIconButton = styled(IconButton)({
   color: 'white',
-  fontSize: '10px',  // Decreased font size
-  flexDirection: 'column',  // Added to display text below icon
+  fontSize: '10px',
+  flexDirection: 'column',
 });
-
+ 
+const LogoutButton = styled(Button)({
+  fontSize: '18px',
+  backgroundColor: '#FF0000',
+  color: 'white',
+  '&:hover': {
+    backgroundColor: '#CC0000',
+  },
+});
+ 
 const AccountPage = () => {
   const navigate = useNavigate();
-
-  const handleEditProfile = () => {
-    // Handle edit profile logic here
-    console.log('Editing profile');
+ 
+  // Dummy data for name and email, you can replace it with actual data
+  const name = 'John Doe';
+  const email = 'john.doe@example.com';
+ 
+  const handleLogout = () => {
+    // Implement your logout logic here
+    console.log('Logging out');
+    // Redirect to the login page after logout
+    navigate('/');
   };
-
-  const handleCheckStatus = () => {
-    // Handle check status logic here
-    console.log('Checking notification status');
-  };
-
+ 
   return (
-    <AccountContainer>
-      <DriverImage
-        src="https://source.unsplash.com/random/150x150" // Replace with an API or a proper image source
-        alt="Driver"
-      />
-      <Button variant="contained" color="primary" style={{ marginTop: '10px' }} onClick={handleEditProfile}>
-        Edit Profile
-      </Button>
-      <Typography variant="body1" style={{ marginTop: '10px' }}>
-        You are in driver mode.
+    <>
+    <Box sx = {{display : "flex", justifyContent : "space-between", mb : 2}}>
+  <ArrowBackIcon onClick={() => {
+    navigate("/RideRequest");
+              }} />
+  <Typography sx = {{fontWeight : "bold"}}>Profile</Typography>
+  <MoreVertIcon/>
+</Box>
+        <AccountContainer>
+
+      <DriverImage src="https://source.unsplash.com/random/150x150" alt="Driver" />
+      <Typography variant="h6" gutterBottom>
+        {name}
       </Typography>
-
-      {/* Switch to Driver Section */}
-      <SwitchDriverButton variant="contained" color="primary" onClick={() => navigate('/driver')}>
-        <SwitchDriverIcon /> Switch to Driver <ArrowForwardIcon />
-      </SwitchDriverButton>
-
-      {/* Check Status Section */}
-      <CheckStatusButton variant="contained" color="primary" onClick={handleCheckStatus}>
-        <NotificationIcon /> Check Status <ArrowForwardIcon />
-      </CheckStatusButton>
-
-      {/* Navigation Bar */}
-      <NavigationBar position="fixed">
+      <Typography variant="body2" color="textSecondary">
+        {email}
+      </Typography>
+      <LogoutButton style={{marginTop: '60px', padding: '10px 30px', backgroundColor : "blue"}} onClick={() => {
+    navigate("/LoginForm/*");
+              }}>Logout</LogoutButton>
+    </AccountContainer>
+    
+    <NavigationBar  sx={{backgroundColor:"white", display:'flex', justifyContent:"space-between"}}position="fixed">
         <StyledToolbar>
-          <StyledIconButton component={Link} to="/">
-            <HomeIcon />
-            <Typography variant="caption">Home</Typography>
+          <StyledIconButton component={Link} to="/BookRide">
+            <HomeIcon  sx={{color:"gray"}} />
+           
           </StyledIconButton>
-          <StyledIconButton component={Link} to="/">
-            <ScheduleIcon />
-            <Typography variant="caption">Schedule</Typography>
-          </StyledIconButton>
-          <StyledIconButton component={Link} to="/">
-            <HistoryIcon />
-            <Typography variant="caption">History</Typography>
-          </StyledIconButton>
-          <StyledIconButton component={Link} to="/">
-            <RequestIcon />
-            <Typography variant="caption">Ride Requests</Typography>
+          <StyledIconButton component={Link} to="/RideRequest">
+            <RequestIcon  sx={{color:"gray"}} />
+           
           </StyledIconButton>
           <StyledIconButton component={Link} to="/account">
-            <AccountIcon />
-            <Typography variant="caption">Account</Typography>
+            <AccountIcon  sx={{color:"gray"}} />
+           
           </StyledIconButton>
         </StyledToolbar>
       </NavigationBar>
-    </AccountContainer>
+    </>
   );
 };
+ 
+
 
 export default AccountPage;

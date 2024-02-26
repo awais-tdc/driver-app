@@ -1,7 +1,7 @@
 // SplashScreen.jsx
 import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link} from 'react-router-dom';
 
 const SplashScreen = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const SplashScreen = () => {
       flexDirection="column"
       alignItems="center"
       justifyContent="space-between"
-      minHeight="100vh"
+      height="90vh"
       paddingX={{ xs: 2, sm: 4, md: 6 }}
     >
       <div style={{ marginTop: '150px', textAlign: 'center' }}>

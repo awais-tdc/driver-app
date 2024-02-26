@@ -24,35 +24,37 @@ import RequestIcon from "@mui/icons-material/RequestPage";
 import AccountIcon from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Link } from "react-router-dom";
+ 
 
 const locationArray = [
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27225.328237875936!2d74.25636258697475!3d31.46461865700412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919015f82b0b86f%3A0x2fcaf9fdeb3d02e6!2sJohar%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1708938945429!5m2!1sen!2s",
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54508.42654913652!2d74.1397959768552!3d31.36514180687851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3918ff9a30fa362d%3A0x528615a7981ce611!2sBahria%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1708939466584!5m2!1sen!2s",
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.0380940038967!2d74.3877072746941!3d31.468138249722468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190611d0832215%3A0x461694c13fc63062!2sDHA%20Sector%20EE%20Dha%20Phase%204%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1708939582952!5m2!1sen!2s",
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27225.328237875936!2d74.25636258697475!3d31.46461865700412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919015f82b0b86f%3A0x2fcaf9fdeb3d02e6!2sJohar%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1708944640767!5m2!1sen!2s",
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.038094003889!2d74.38770727469411!3d31.468138249722465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190611d0832215%3A0x461694c13fc63062!2sDHA%20Sector%20EE%20Dha%20Phase%204%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1708944685209!5m2!1sen!2s" ,
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54508.43498547152!2d74.10717477476902!3d31.36512725929551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3918ff9a30fa362d%3A0x528615a7981ce611!2sBahria%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1708944738650!5m2!1sen!2s",
 ];
-
+ 
 const AnimatedBox = styled(Box)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
 });
-
+ 
 const AnimatedTextField = styled(TextField)({
   marginBottom: "10px",
 });
-
+ 
 const StyledImage = styled("img")({
   width: "100%",
   borderRadius: "30px",
 });
-
-const StyledFormContainer = styled("div")({
-  backgroundColor: "rgb(229, 244, 298)",
-  borderTopLeftRadius: "50px",
-  padding: "20px",
-  marginTop: "10px",
-});
-
+ 
+// const StyledFormContainer = styled("div")({
+//   backgroundColor: "rgb(229, 244, 298)",
+//   borderTopLeftRadius: "50px",
+//   padding: "20px",
+//   marginTop: "10px",
+// });
+ 
 const NavigationBar = styled(AppBar)({
   top: "auto",
   bottom: 0,
@@ -63,15 +65,17 @@ const NavigationBar = styled(AppBar)({
   backgroundColor: "rgb(0,0,221)",
   cursor: "pointer",
 });
-
+ 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
 });
-
+ 
 const StyledIconButton = styled(IconButton)({
   color: "white",
+  fontSize: "18px", // Adjust the fontsize here
 });
+ 
 
 const BookRide = () => {
   const [pickupLocation, setPickupLocation] = useState("");
@@ -79,9 +83,9 @@ const BookRide = () => {
   const [pickupTime, setPickupTime] = useState("");
   const [selectedPickupTime, setSelectedPickupTime] = useState("");
   const [vehicleType, setVehicleType] = useState("");
-
+ 
   const navigate = useNavigate();
-
+ 
   const handleBookNow = () => {
     // Pass pickupLocation and destination as state
     navigate("/RideRequest", {
@@ -94,7 +98,7 @@ const BookRide = () => {
       },
     });
   };
-
+ 
   const getPickupTimeOptions = () => {
     if (pickupTime === "Morning") {
       return ["6am", "7am", "8am"];
@@ -103,9 +107,10 @@ const BookRide = () => {
     }
     return [];
   };
-  const [location,setlocation]=useState(locationArray[0]);
+  const [location,setlocation]=useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3398.6755665441315!2d74.30686077469947!3d31.58794354380205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39191c9dbf0ddeb1%3A0x13bfcdb10fb490de!2sBadshahi%20Mosque!5e0!3m2!1sen!2s!4v1708943905519!5m2!1sen!2s")
+  const [location2,setlocation2] =useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.381550731999!2d74.33075487469615!3d31.5136789474742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190460e97d35a9%3A0xb34cbe2044387a60!2sGaddafi%20Stadium!5e0!3m2!1sen!2s!4v1708944180630!5m2!1sen!2s")
   return (
-    
+   
     <Box>
       <AnimatedBox>
         <StyledImage
@@ -137,25 +142,25 @@ const BookRide = () => {
               Create your membership
             </Typography>
           </Box>
-          <form style={{ width: "100%" }}>
+          <form style={{ width: "100%"  }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
+                <Box sx={{margin:' 0 auto'}}>
                 <AnimatedTextField
+               
                   label="Enter Your Pickup Location"
                   variant="outlined"
                   fullWidth
                   value={pickupLocation}
                   onChange={(e) => {setPickupLocation(e.target.value);
-                  if(e.target.value==="johar town"){
+                  if(e.target.value==="Johar Town"){
+                    setlocation(locationArray[0]);
+                  }else if(e.target.value==="DHA"){
                     setlocation(locationArray[1]);
-                  }else if(e.target.value== "DHA"){
+                  }else if(e.target.value==="Bahria"){
                     setlocation(locationArray[2]);
-                  }else if(e.target.value=="Bahria"){ 
-                    setlocation(locationArray[0]);
                   }
-                  else {
-                    setlocation(locationArray[0]);
-                  }
+                 
                 }}
                   InputProps={{
                     startAdornment: (
@@ -174,7 +179,7 @@ const BookRide = () => {
                         width: "100%",
                       }}
                     >
-                      <Typography>Johar town</Typography>
+                      <Typography>Johar Town</Typography>
                       <LocationOnIcon />
                     </Box>
                   </MenuItem>
@@ -203,10 +208,11 @@ const BookRide = () => {
                     </Box>
                   </MenuItem>
                 </AnimatedTextField>
+                </Box>
                 <Box>
                   <div style={{ width: "100%" }}>
                     <iframe
-                    
+                   
                       title="Google Map"
                       width="100%"
                       height="200"
@@ -222,12 +228,20 @@ const BookRide = () => {
                 </Box>
               </Grid>
               <Grid item xs={12}>
+                <Box sx={{margin:' 0 auto'}}>
                 <AnimatedTextField
                   label="Where To?"
                   variant="outlined"
                   fullWidth
                   value={destination}
-                  onChange={(e) => setDestination(e.target.value)}
+                  onChange={(e) => {setDestination(e.target.value)
+                    if(e.target.value==="Johar Town"){
+                      setlocation2(locationArray[0]);
+                    }else if(e.target.value=== "DHA"){
+                      setlocation2(locationArray[1]);
+                    }else if(e.target.value==="Bahria"){
+                      setlocation2(locationArray[2]);
+                    }}}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -274,10 +288,11 @@ const BookRide = () => {
                     </Box>
                   </MenuItem>
                 </AnimatedTextField>
+                </Box>
                 <Box>
                   <div style={{ width: "100%" }}>
                     <iframe
-                    
+                   
                       title="Google Map"
                       width="100%"
                       height="200"
@@ -286,7 +301,7 @@ const BookRide = () => {
                       marginHeight="0"
                       marginWidth="0"
                       // src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                      src={location}
+                      src={location2}
                     >
                       <a href="https://www.google.com/maps/search/?api=1&query=johar+town">
                         gps devices
@@ -358,29 +373,32 @@ const BookRide = () => {
                   fullWidth
                   onClick={handleBookNow}
                 >
-                  Book Now
+                  Create Membership
                 </Button>
               </Grid>
             </Grid>
           </form>
         </Box>
       </AnimatedBox>
-      <NavigationBar
-        sx={{
-          backgroundColor: "white",
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-        position="fixed"
-      >
+      
+      <NavigationBar  sx={{backgroundColor:"white", display:'flex', justifyContent:"space-between"}}position="fixed">
         <StyledToolbar>
-          <HomeIcon sx={{ color: "gray" }} />
-          <RequestIcon sx={{ color: "gray" }} />
-          <AccountIcon sx={{ color: "gray" }} />
+          <StyledIconButton component={Link} to="/BookRide">
+            <HomeIcon  sx={{color:"gray"}} />
+           
+          </StyledIconButton>
+          <StyledIconButton component={Link} to="/RideRequest">
+            <RequestIcon  sx={{color:"gray"}} />
+           
+          </StyledIconButton>
+          <StyledIconButton component={Link} to="/account">
+            <AccountIcon  sx={{color:"gray"}} />
+           
+          </StyledIconButton>
         </StyledToolbar>
       </NavigationBar>
     </Box>
   );
 };
-
+ 
 export default BookRide;
